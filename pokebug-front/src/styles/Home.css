@@ -1,0 +1,77 @@
+/* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8; /* Soft light blue background */
+}
+
+/* Main container for the home page */
+.home {
+    padding: 20px;
+    background-color: #ffffff; /* White background for the content area */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for a modern look */
+    max-width: 1200px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Page title styling */
+.page-title {
+    font-size: 36px;
+    color: #040404;
+    margin-bottom: 50px;
+    font-weight: bold;
+}
+
+/* Container for the Pokemon list */
+.pokemon-list-container {
+    margin-left: 285px;
+    padding: 15px;
+    background-color: rgb(255, 255, 255);
+    width: 600px;
+    height: 500px;
+    align-items: center;
+    overflow: auto;
+
+}
+
+/* Styling for the list */
+.pokemon-list {
+    list-style-type: none;
+    padding: 0;
+    border: #3b6151;
+    border-radius: 10px;
+}
+
+/* Styling for each Pokemon item */
+.pokemon-item {
+    margin: 10px 0;
+}
+
+/* Styling for Pokemon links */
+.pokemon-link {
+    text-decoration: none;
+    color: #000000; /* Soft blue for links */
+    font-size: 20px;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover effect for links */
+.pokemon-link:hover {
+    background-color: #e3f2fd; /* Light blue background on hover */
+    color: #b36969; /* Darker blue for the text */
+}
+
+/* Loading and error message styling */
+.loading,
+.error {
+    font-size: 20px;
+    color: #ff6347; /* Red color for errors and loading */
+    text-align: center;
+    padding: 20px;
+}

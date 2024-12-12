@@ -1,0 +1,31 @@
+/* Style for the navigation bar container */
+.navbar {
+    background-color: #a6a680;
+    padding: 15px;
+}
+
+/* Style for the unordered list */
+.navbar-list {
+    list-style-type: none;
+    display: ruby;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style for each list item */
+.navbar-item {
+    margin: 0 10px;
+}
+
+/* Style for the links */
+.navbar-link {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+/* Change link color on hover */
+.navbar-link:hover {
+    color: #f0a500;
+}
