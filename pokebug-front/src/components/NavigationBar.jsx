@@ -1,7 +1,11 @@
 import '../styles/NavigationBar.css';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import {LogOutButton} from "./LogOutButton";
+import {useContext} from "react";
+import AuthContext from "../context/AuthContext";
 
 export const NavigationBar = () => {
+    const {user, logOut} = useContext(AuthContext);
     return (
         <div className="navbar">
             <nav>
@@ -21,8 +25,20 @@ export const NavigationBar = () => {
                             Register
                         </Link>
                     </li>
-                </ul>
-            </nav>
-        </div>
-    );
-};
+
+                    {!user ? (<>
+                            <li className="navbar-item">
+                                <Link to="/login" className="navbar-link">
+                                    Login
+                                </Link>
+                            </li>
+                    </>) : (
+                        <li className="navbar-item">
+
+                            <LogOutButton/>
+                        </li>)}
+                        </ul>
+                        </nav>
+                        </div>
+                        );
+                    };
