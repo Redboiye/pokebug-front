@@ -41,7 +41,10 @@ export const PokemonDetails = () => {
             <h1 className="title-name">PokeBug</h1>
             <div className="row">
                 <h1>{pokemon.name}</h1>
+                <img className="pokemon-favicon" src={pokemon.favicon} alt="favicon"/>
                 <p>{pokemon.description}</p>
+                <p>{pokemon.type}</p>
+
 
             </div>
         </div>
