@@ -33,9 +33,9 @@ export const NavigationBar = () => {
                                 </Link>
                             </li>
                     </>) : (
-                        <li className="navbar-item">
-
+                        <li className="navbar-item" >
                             <LogOutButton/>
+                             {user.username}
                         </li>)}
                         </ul>
                         </nav>
