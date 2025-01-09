@@ -1,10 +1,31 @@
 import axios from "axios";
+import Cookies from "js-cookie";
+
+const getCsrfToken = () => {
+    return Cookies.get("csrftoken");
+}
 
 
 const apiBaseURL = "http://127.0.0.1:8000/"
+
+const api = axios.create({
+    baseURL: apiBaseURL,
+    withCredentials: true,
+})
+
+api.interceptors.request.use(config => {
+    const csrfToken = getCsrfToken();
+    console.log("CSRF token", csrfToken);
+    if (csrfToken) {
+        config.headers["x-csrftoken"] = csrfToken;
+    }
+    return config;
+})
+
+
 export const fetchAllPokemons = async () => {
     try {
-        const response = await axios.get(apiBaseURL + "pokemon");
+        const response = await api.get(apiBaseURL + "pokemon");
         return response.data; //varam accesot json ar .data
     } catch (error) {
         console.log("Error fetching pokemon: ", error);
@@ -15,7 +36,7 @@ export const fetchAllPokemons = async () => {
 }
 export const searchPokemonByName = async (name) => {
     try {
-        const response = await axios.get(apiBaseURL + "pokemon", {params: {name: name}});
+        const response = await api.get(apiBaseURL + "pokemon", {params: {name: name}});
         return response.data; //varam accesot json ar .data
     } catch (error) {
         console.log("Error fetching pokemon: ", error);
@@ -24,7 +45,7 @@ export const searchPokemonByName = async (name) => {
 }
 export const logInUser = async (username, password) => {
     try {
-        const response = await axios.post(apiBaseURL + "login", {username, password});
+        const response = await api.post(apiBaseURL + "login", {username, password});
         localStorage.setItem('user', JSON.stringify(response.data.user));
         console.log("User Details: ", response.data);
         return response.data;
@@ -36,7 +57,7 @@ export const logInUser = async (username, password) => {
 
 export const logOutUser = async () => {
     try {
-        const response = await axios.post(apiBaseURL + "logout");
+        const response = await api.post(apiBaseURL + "logout");
         localStorage.removeItem('user');
         return response.data;
     } catch (error) {
@@ -48,11 +69,10 @@ export const logOutUser = async () => {
 
 export const toggleFavorite = async (pokemonId, userId) => {
     try {
-        const response = await axios.post(
+        const response = await api.post(
             `${apiBaseURL}pokemon/${pokemonId}/favorite/`,
-            {
-                userId,
-            },
+            {user_id: userId},
+            {headers: {"x-csrftoken": getCsrfToken()}}
         );
 
         return response.data;
