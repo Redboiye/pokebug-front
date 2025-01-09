@@ -5,7 +5,7 @@ import {useContext} from "react";
 import AuthContext from "../context/AuthContext";
 
 export const NavigationBar = () => {
-    const {user, logOut} = useContext(AuthContext);
+    const {user} = useContext(AuthContext);
     return (
         <div className="navbar">
             <nav>
@@ -27,18 +27,18 @@ export const NavigationBar = () => {
                     </li>
 
                     {!user ? (<>
-                            <li className="navbar-item">
-                                <Link to="/login" className="navbar-link">
-                                    Login
-                                </Link>
-                            </li>
+                        <li className="navbar-item">
+                            <Link to="/login" className="navbar-link">
+                                Login
+                            </Link>
+                        </li>
                     </>) : (
-                        <li className="navbar-item" >
+                        <li className="navbar-item">
                             <LogOutButton/>
-                             {user.username}
+                            {user.username}
                         </li>)}
-                        </ul>
-                        </nav>
-                        </div>
-                        );
-                    };
+                </ul>
+            </nav>
+        </div>
+    );
+};

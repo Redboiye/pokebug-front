@@ -6,7 +6,6 @@ import {Register} from "./pages/Register";
 import {Favorites} from "./pages/Favorites";
 import {Login} from "./components/Login";
 
-
 export const App = () => {
     return (
 
